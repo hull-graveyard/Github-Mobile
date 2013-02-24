@@ -4,6 +4,36 @@ Github Mobile
 Watch this repo to get alerts about this project.
 
 
+---
+
+## Installing
+
+First, clone this repository :
+
+    git clone git@github.com:hull/Github-Mobile.git
+
+Install [node.js](http://nodejs.org) (Only used for building the app, not needed for deployment)
+
+[grunt-cli](https://github.com/gruntjs/grunt-cli) as a global module.
+It's amazing so you should do it anyways.
+
+    [sudo] npm install grunt-cli -g
+    [sudo] npm install bower -g
+
+then install grunt and it's modules in the project's folder.
+
+    cd Github-Mobile
+    npm install
+    bower install
+
+## Running the app
+
+### To run the app locally, run:
+
+    grunt server
+
+---
+
 <img src="https://github.com/jakiestfu/Github-Mobile/raw/master/screens/vanity/vanity.jpeg">
 
 * <b><u>View the retinas for the <a href="https://github.com/jakiestfu/Github-Mobile/raw/master/screens/real/login_v1.png">Login Screen</a> and the <a href="https://github.com/jakiestfu/Github-Mobile/raw/master/screens/real/news_v1.png">News Feed</a></u></b>
