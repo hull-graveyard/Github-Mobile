@@ -1,6 +1,5 @@
 Hull.init({
-  appId: "512a369409e50d2af5000003",
-  orgUrl: "http://sbellity.hullapp.dev",
-  jsUrl: 'http://js.hull.dev/dist',
+  appId: "512a21d84f09747aea000028",
+  orgUrl: "http://hull-demos.alpha.hullapp.io",
   debug: true  
 });
