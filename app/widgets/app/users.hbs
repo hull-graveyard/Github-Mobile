@@ -1,0 +1,28 @@
+<header class="bar-title">
+  <a class="button" data-hull-action="toggleShelf" id="activate-shelf">
+    <span class="icon-github-2"></span>
+  </a>
+  <h1 class="title">{{login}}</h1>
+  <a class="button" data-hull-action="openNotifications">
+    <span class="notification-indicator unread"></span>
+  </a>
+</header>
+<div class="push-hook">
+  <nav class="bar-standard">
+    {{#if sectionViews}}
+    <ul class="segmented-controller">
+      {{#sectionViews}}
+      <li {{#ifEqual this ../currentView}}class="active"{{/ifEqual}}>
+        <a href="#/users/{{../login}}/{{this}}" data-transition="fade">{{classify this}}</a>
+      </li>
+      {{/sectionViews}}
+    </ul>
+    {{/if}}
+  </nav>
+  <h1>{{currentView}}</h1>
+  {{#if currentView}}
+  <div class="content" data-hull-widget="{{currentView}}" data-hull-login="{{login}}" data-hull-activity='events'>
+  </div>
+  {{/if}}
+
+</div>

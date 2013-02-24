@@ -1,0 +1,14 @@
+<ul class="list text-list lightweight">
+{{#starred}}
+  <li>
+    <span class="icon-book"></span>
+    <div class="text-body"> <b><a href="#/repos/{{owner.login}}/{{name}}">{{owner.login}}/{{name}}</a></b> 
+      <p>{{description}}</p>
+    </div>
+    <a class="button do-full-remove" data-hull-action="unstar" data-hull-repo="{{owner.login}}/{{name}}">
+      <span class="icon-star"></span>
+      Unstar
+    </a>
+  </li>
+{{/starred}}
+</ul>

@@ -1,0 +1,24 @@
+<ul class="list text-list repo-list">
+  {{#repos}}
+  <li>
+    <a data-transition="slide-in" href="#/repos/{{owner.login}}/{{name}}" class="block-list-link">
+      <span class="icon-book"></span>
+      <div class="text-body"> <b><span class="link-color">{{name}}</span>
+          <div class="repo-list-meta">
+            <p>{{language}}</p>
+            <p>
+              <span class="icon-star"></span>
+              {{watchers_count}}
+            </p>
+            <p>
+              <span class="icon-fork"></span>
+              {{forks_count}}
+            </p>
+          </div></b> 
+        <p></p>
+        <div class="time">Last updated {{fromNow updated_at}}</div>
+      </div>
+    </a>
+  </li>
+  {{/repos}}
+</ul>

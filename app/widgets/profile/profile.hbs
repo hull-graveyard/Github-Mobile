@@ -1,0 +1,115 @@
+<div class="margin">
+
+  {{#profile}}
+  <div id="profile">
+
+    <input type="hidden" value="{{login}}" id="focus_username">
+
+    <div class="user-focus">
+      <div class="top-half clearfix">
+        <div class="left-cell">
+          <div class="image" style="background-image:url({{avatar_url}});"></div>
+        </div>
+
+        <div class="right-cell">
+          <div class="right-top-cell">
+            <ul>
+              <li>
+                <a> <b>{{followers}}</b>
+                  <span>followers</span>
+                </a>
+              </li>
+              <li>
+                <a> <b>{{public_repos}}</b>
+                  <span>repos</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <b>{{following}}</b>
+                  <span>following</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="right-bottom-cell">
+
+            <a class="button follow-button following" data-hull-action="follow" data-hull-login="{{login}}">   
+              Following
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-half">
+        <b class="clearfix">
+          {{name}}
+          <span class="pull-right">
+            <span class="icon-clock"></span>
+            Joined
+            <span class="black">{{fromNow created_at}}</span>
+          </span></b> 
+        <div>
+          <p>
+            <span class="icon-office"></span>
+            {{company}}
+          </p>
+          {{#if location}}
+          <p>
+            <span class="icon-location"></span>
+            {{location}}
+          </p>
+          {{/if}}
+          {{#if email}}
+          <p>
+            <span class="icon-envelop"></span>
+            <a href="mailto:{{email}}">{{email}}</a>
+          </p>
+          {{/if}}
+          {{#if blog}}
+          <p>
+            <span class="icon-link"></span>
+            <a href="{{blog}}">{{blog}}</a>
+          </p>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+    <div class="additional">
+
+      <b>{{login}}'s Open Source Contributions</b>
+      <div class="wrap">
+        <div id="contributions-legend">
+          <div class="week-labels">
+            <span>M</span>
+            <span>W</span>
+            <span>F</span>
+          </div>
+          <div class="fade"></div>
+        </div>
+        <div id="contributions" class="loading"></div>
+      </div>
+
+      <div class="panels">
+        <div class="panel repos-panel">
+          <div class="inner">
+            <b></b>
+            <p>Feb 24 2012 - Feb 24 2013</p>
+            <span>Year of Contributions</span>
+          </div>
+        </div>
+        <div class="panel streak-panel">
+          <div class="inner">
+            <b></b>
+            <p></p>
+            <span>Longest Streak</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  {{/profile}}
+</div>
+

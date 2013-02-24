@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>GitHub</title>
+    
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <meta name="apple-mobile-web-app-title" content="GitHub">
+
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./img/icons/apple-touch-icon-57x57.png">
+    
+    <!-- build:css application.css -->
+    <link type="text/css" rel="stylesheet" href="./components/ratchet/dist/ratchet.css">
+    <link type="text/css" rel="stylesheet" href="./styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js vendors.js -->
+    <script src="./components/jquery/jquery.js"></script>
+    <!-- <script src="./components/ratchet/dist/ratchet.js"></script> -->
+    <script src="./components/fastclick/lib/fastclick.js"></script>
+    <!-- endbuild -->
+
+    <script src="http://js.hull.dev/dist/0.2.0/hull.js"></script>
+
+    <!-- build:js application.js -->
+    <script src="scripts/hull-init.js"></script>
+    <script src="scripts/templates.js"></script>
+    <script src="scripts/widgets.js"></script>
+    <!-- endbuild -->
+
+
+</head>
+
+  <body class="animate">
+    <div id="app">
+      <div id="shelf" data-hull-widget="shelf"></div>
+      <div id="wrap" data-hull-widget="githull"></div>
+      <div id="blanket" data-hull-widget="blanket" data-event="modal.close"></div>
+    </div> 
+  </body>
+</html>

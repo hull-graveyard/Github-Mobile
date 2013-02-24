@@ -1,0 +1,18 @@
+{{#if loggedIn.github}}
+<div data-hull-widget="app"></div>
+{{else}}
+{{json loggedIn}}
+<header class="bar-title">
+  <a class="button" href="#">About</a>
+  <h1 class="title">login</h1>
+</header>
+<div class="push-hook">
+  <div class="content">
+    <div class="margin">
+      <header class="hero-text">github</header>
+      <p class="note"><span>Enjoy all the social benefits of GitHub, right from your phone.</span></p>
+      <a class="button button-block button-dark" data-hull-action="login" data-hull-provider="github">Login</a>
+    </div>
+  </div>
+</div>
+{{/if}}
