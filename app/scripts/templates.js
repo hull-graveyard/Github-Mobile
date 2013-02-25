@@ -6,7 +6,7 @@ this["Hull"]["templates"]["activity/activity"] = Handlebars.template(function (H
 helpers = helpers || Handlebars.helpers; data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing, helperMissing=helpers.helperMissing;
 
-function program1(depth0,data,depth1) {
+function program1(depth0,data) {
   
   var buffer = "", stack1, stack2, options;
   buffer += "\n  <li>\n    <span class=\"";
@@ -29,7 +29,7 @@ function program1(depth0,data,depth1) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n        \n        <div class=\"time\">";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, depth1.created_at, options) : helperMissing.call(depth0, "fromNow", depth1.created_at, options)))
+  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, ((stack1 = depth0.event),stack1 == null || stack1 === false ? stack1 : stack1.created_at), options) : helperMissing.call(depth0, "fromNow", ((stack1 = depth0.event),stack1 == null || stack1 === false ? stack1 : stack1.created_at), options)))
     + "</div>\n\n      </p>\n    </div>\n  </li>\n";
   return buffer;
   }
@@ -108,7 +108,7 @@ function program8(depth0,data) {
   }
 
   buffer += "<ul class=\"list text-list\">\n";
-  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(program1, data, depth0),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data};
   if (stack1 = helpers.news) { stack1 = stack1.call(depth0, options); }
   else { stack1 = depth0.news; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   if (!helpers.news) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
