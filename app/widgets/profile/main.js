@@ -2,7 +2,7 @@ Hull.widget('profile', {
   templates: ['profile'],
   datasources: {
     profile: function() {
-      return this.api('github/users/' + this.options.login)
+      return this.api({ provider: 'github', path: 'users/' + this.options.login })
     }
   },
 

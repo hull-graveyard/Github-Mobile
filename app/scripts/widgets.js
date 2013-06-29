@@ -4,7 +4,8 @@ Hull.widget('activity', {
 
   datasources: {
     news: function() {
-      return this.api('github/users/' + this.options.login + '/' + (this.options.activity || 'events'));
+      var path = 'users/' + this.options.login + '/' + (this.options.activity || 'events');
+      return this.api({ provider: 'github', path: path });
     }
   },
 
@@ -58,7 +59,7 @@ Hull.widget('app', {
   ],
 
   initialize: function () {
-    this.initRouter();
+    this.initRouter();  
   },
 
   currentSection: 'dashboard',
@@ -79,6 +80,7 @@ Hull.widget('app', {
   },
 
   initRouter: function() {
+    var Backbone = require('backbone');
     var Router = Backbone.Router.extend({
       routes: {
         'dashboard/:view'     : 'dashboard',
@@ -107,6 +109,7 @@ Hull.widget('app', {
   },
 
   beforeRender: function(data) {
+    console.warn("Rendering app...", data);
     data.githubAccount  = _.select(data.me.identities, function(i) { return i.provider == 'github'; })[0];
     data.currentView    = this.currentView;
     data.currentSection = this.currentSection;
@@ -139,7 +142,13 @@ Hull.widget("blanket", {
 /*global Hull:true */
 Hull.widget("githull", {
   templates: ['githull'],
-  refreshEvents: ['model.hull.me.change']
+  refreshEvents: ['model.hull.me.change'],
+  initialize: function() {
+    // Hack to force credentials refresh...
+    this.sandbox.on('hull.currentUser', function() {
+      window.location.reload();
+    });
+  }
 });
 
 
@@ -153,7 +162,7 @@ Hull.widget('issues', {
   templates: ['issues'],
   datasources: {
     issues: function() {
-      return this.api('github/issues');
+      return this.api({ provider: 'github', path: 'issues' });
     }
   },
 
@@ -181,7 +190,7 @@ Hull.widget('profile', {
   templates: ['profile'],
   datasources: {
     profile: function() {
-      return this.api('github/users/' + this.options.login)
+      return this.api({ provider: 'github', path: 'users/' + this.options.login })
     }
   },
 
@@ -203,7 +212,7 @@ Hull.widget('pulls', {
   datasources: {
     pulls: function() {
       // HOW TO GET ALL THE PULL REQUESTS OF A USER VIA THE API ?
-      return this.api('github/issues');
+      return this.api({ provider: 'github', path: 'issues' });
     }
   },
 
@@ -231,7 +240,7 @@ Hull.widget('repos', {
   templates: ['repos'],
   datasources: {
     repos: function() {
-      return this.api('github/users/' + this.options.login + '/repos');
+      return this.api({ provider: 'github', path: 'users/' + this.options.login + '/repos' });
     }
   }
 });
@@ -280,7 +289,7 @@ Hull.widget('stars', {
 
   datasources: {
     starred: function() {
-      return this.api('github/users/' + this.options.login + '/starred');
+      return this.api({ provider: 'github', path: 'users/' + this.options.login + '/starred' });
     }
   },
 

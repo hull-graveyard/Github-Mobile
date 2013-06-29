@@ -2,7 +2,7 @@ Hull.widget('issues', {
   templates: ['issues'],
   datasources: {
     issues: function() {
-      return this.api('github/issues');
+      return this.api({ provider: 'github', path: 'issues' });
     }
   },
 

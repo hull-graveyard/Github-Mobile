@@ -2,8 +2,8 @@ this["Hull"] = this["Hull"] || {};
 this["Hull"]["templates"] = this["Hull"]["templates"] || {};
 
 this["Hull"]["templates"]["activity/activity"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
@@ -29,7 +29,7 @@ function program1(depth0,data) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n        \n        <div class=\"time\">";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, ((stack1 = depth0.event),stack1 == null || stack1 === false ? stack1 : stack1.created_at), options) : helperMissing.call(depth0, "fromNow", ((stack1 = depth0.event),stack1 == null || stack1 === false ? stack1 : stack1.created_at), options)))
+  buffer += escapeExpression(((stack1 = helpers.fromNow || depth0.fromNow),stack1 ? stack1.call(depth0, ((stack1 = depth0.event),stack1 == null || stack1 === false ? stack1 : stack1.created_at), options) : helperMissing.call(depth0, "fromNow", ((stack1 = depth0.event),stack1 == null || stack1 === false ? stack1 : stack1.created_at), options)))
     + "</div>\n\n      </p>\n    </div>\n  </li>\n";
   return buffer;
   }
@@ -118,15 +118,15 @@ function program8(depth0,data) {
   });
 
 this["Hull"]["templates"]["app/dashboard"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, self=this, helperMissing=helpers.helperMissing, functionType="function", escapeExpression=this.escapeExpression, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
   
   var buffer = "", stack1, options;
   buffer += "\n    <ul class=\"segmented-controller\">\n      ";
-  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(program2, data, depth0),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(2, program2, data, depth0),data:data};
   if (stack1 = helpers.sectionViews) { stack1 = stack1.call(depth0, options); }
   else { stack1 = depth0.sectionViews; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   if (!helpers.sectionViews) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
@@ -139,13 +139,13 @@ function program2(depth0,data,depth1) {
   var buffer = "", stack1, stack2, options;
   buffer += "\n      <li ";
   options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data};
-  stack2 = ((stack1 = helpers.ifEqual),stack1 ? stack1.call(depth0, depth0, depth1.currentView, options) : helperMissing.call(depth0, "ifEqual", depth0, depth1.currentView, options));
+  stack2 = ((stack1 = helpers.ifEqual || depth0.ifEqual),stack1 ? stack1.call(depth0, depth0, depth1.currentView, options) : helperMissing.call(depth0, "ifEqual", depth0, depth1.currentView, options));
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += ">\n        <a href=\"#/dashboard/"
     + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
     + "\" data-transition=\"fade\">";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.classify),stack1 ? stack1.call(depth0, depth0, options) : helperMissing.call(depth0, "classify", depth0, options)))
+  buffer += escapeExpression(((stack1 = helpers.classify || depth0.classify),stack1 ? stack1.call(depth0, depth0, options) : helperMissing.call(depth0, "classify", depth0, options)))
     + "</a>\n      </li>\n      ";
   return buffer;
   }
@@ -183,15 +183,15 @@ function program5(depth0,data) {
   });
 
 this["Hull"]["templates"]["app/users"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, self=this, helperMissing=helpers.helperMissing, functionType="function", escapeExpression=this.escapeExpression, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
   
   var buffer = "", stack1, options;
   buffer += "\n    <ul class=\"segmented-controller\">\n      ";
-  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(program2, data, depth0),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(2, program2, data, depth0),data:data};
   if (stack1 = helpers.sectionViews) { stack1 = stack1.call(depth0, options); }
   else { stack1 = depth0.sectionViews; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   if (!helpers.sectionViews) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
@@ -204,7 +204,7 @@ function program2(depth0,data,depth1) {
   var buffer = "", stack1, stack2, options;
   buffer += "\n      <li ";
   options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data};
-  stack2 = ((stack1 = helpers.ifEqual),stack1 ? stack1.call(depth0, depth0, depth1.currentView, options) : helperMissing.call(depth0, "ifEqual", depth0, depth1.currentView, options));
+  stack2 = ((stack1 = helpers.ifEqual || depth0.ifEqual),stack1 ? stack1.call(depth0, depth0, depth1.currentView, options) : helperMissing.call(depth0, "ifEqual", depth0, depth1.currentView, options));
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += ">\n        <a href=\"#/users/"
     + escapeExpression(((stack1 = depth1.login),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -212,7 +212,7 @@ function program2(depth0,data,depth1) {
     + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
     + "\" data-transition=\"fade\">";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.classify),stack1 ? stack1.call(depth0, depth0, options) : helperMissing.call(depth0, "classify", depth0, options)))
+  buffer += escapeExpression(((stack1 = helpers.classify || depth0.classify),stack1 ? stack1.call(depth0, depth0, options) : helperMissing.call(depth0, "classify", depth0, options)))
     + "</a>\n      </li>\n      ";
   return buffer;
   }
@@ -256,8 +256,8 @@ function program5(depth0,data) {
   });
 
 this["Hull"]["templates"]["blanket/blanket"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
@@ -265,8 +265,8 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   });
 
 this["Hull"]["templates"]["githull/githull"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var stack1, stack2, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
@@ -280,8 +280,8 @@ function program3(depth0,data) {
   var buffer = "", stack1, options;
   buffer += "\n";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.json),stack1 ? stack1.call(depth0, depth0.loggedIn, options) : helperMissing.call(depth0, "json", depth0.loggedIn, options)))
-    + "\n<header class=\"bar-title\">\n  <a class=\"button\" href=\"#\">About</a>\n  <h1 class=\"title\">login</h1>\n</header>\n<div class=\"push-hook\">\n  <div class=\"content\">\n    <div class=\"margin\">\n      <header class=\"hero-text\">github</header>\n      <p class=\"note\"><span>Enjoy all the social benefits of GitHub, right from your phone.</span></p>\n      <a class=\"button button-block button-dark\" data-hull-action=\"login\" data-hull-provider=\"github\">Login</a>\n    </div>\n  </div>\n</div>\n";
+  buffer += escapeExpression(((stack1 = helpers.json || depth0.json),stack1 ? stack1.call(depth0, depth0.loggedIn, options) : helperMissing.call(depth0, "json", depth0.loggedIn, options)))
+    + "\n<header class=\"bar-title\">\n  <a class=\"button\" href=\"#\">About</a>\n  <h1 class=\"title\">login</h1>\n</header>\n<div class=\"push-hook\">\n  <div class=\"content\">\n    <div class=\"margin\">\n      <header class=\"hero-text\">github</header>\n      <p class=\"note\"><span>Enjoy all the social benefits of GitHub, right from your phone.</span></p>\n      <a class=\"button button-block button-dark\" data-hull-action=\"login\" data-hull-provider=\"github\" data-hull-scope='repo'>Login</a>\n    </div>\n  </div>\n</div>\n";
   return buffer;
   }
 
@@ -291,8 +291,8 @@ function program3(depth0,data) {
   });
 
 this["Hull"]["templates"]["issues/issues"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
@@ -320,9 +320,9 @@ function program2(depth0,data) {
   buffer += escapeExpression(stack1)
     + "\n          <span>&middot; ";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, depth0.updated_at, options) : helperMissing.call(depth0, "fromNow", depth0.updated_at, options)))
+  buffer += escapeExpression(((stack1 = helpers.fromNow || depth0.fromNow),stack1 ? stack1.call(depth0, depth0.updated_at, options) : helperMissing.call(depth0, "fromNow", depth0.updated_at, options)))
     + "</span>\n        </b>\n      </a>      \n      ";
-  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(program3, data, depth0),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data};
   if (stack2 = helpers.user) { stack2 = stack2.call(depth0, options); }
   else { stack2 = depth0.user; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
   if (!helpers.user) { stack2 = blockHelperMissing.call(depth0, stack2, options); }
@@ -362,8 +362,8 @@ function program3(depth0,data,depth1) {
   });
 
 this["Hull"]["templates"]["profile/profile"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
@@ -399,7 +399,7 @@ function program1(depth0,data) {
   buffer += escapeExpression(stack1)
     + "\n          <span class=\"pull-right\">\n            <span class=\"icon-clock\"></span>\n            Joined\n            <span class=\"black\">";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, depth0.created_at, options) : helperMissing.call(depth0, "fromNow", depth0.created_at, options)))
+  buffer += escapeExpression(((stack1 = helpers.fromNow || depth0.fromNow),stack1 ? stack1.call(depth0, depth0.created_at, options) : helperMissing.call(depth0, "fromNow", depth0.created_at, options)))
     + "</span>\n          </span></b> \n        <div>\n          <p>\n            <span class=\"icon-office\"></span>\n            ";
   if (stack2 = helpers.company) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
   else { stack2 = depth0.company; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
@@ -472,8 +472,8 @@ function program6(depth0,data) {
   });
 
 this["Hull"]["templates"]["pulls/pulls"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
@@ -501,9 +501,9 @@ function program2(depth0,data) {
   buffer += escapeExpression(stack1)
     + "\n          <span>&middot; ";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, depth0.updated_at, options) : helperMissing.call(depth0, "fromNow", depth0.updated_at, options)))
+  buffer += escapeExpression(((stack1 = helpers.fromNow || depth0.fromNow),stack1 ? stack1.call(depth0, depth0.updated_at, options) : helperMissing.call(depth0, "fromNow", depth0.updated_at, options)))
     + "</span>\n        </b>\n      </a>      \n      ";
-  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(program3, data, depth0),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data};
   if (stack2 = helpers.user) { stack2 = stack2.call(depth0, options); }
   else { stack2 = depth0.user; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
   if (!helpers.user) { stack2 = blockHelperMissing.call(depth0, stack2, options); }
@@ -543,8 +543,8 @@ function program3(depth0,data,depth1) {
   });
 
 this["Hull"]["templates"]["repos/repos"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {
@@ -574,7 +574,7 @@ function program1(depth0,data) {
   buffer += escapeExpression(stack2)
     + "\n            </p>\n          </div></b> \n        <p></p>\n        <div class=\"time\">Last updated ";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.fromNow),stack1 ? stack1.call(depth0, depth0.updated_at, options) : helperMissing.call(depth0, "fromNow", depth0.updated_at, options)))
+  buffer += escapeExpression(((stack1 = helpers.fromNow || depth0.fromNow),stack1 ? stack1.call(depth0, depth0.updated_at, options) : helperMissing.call(depth0, "fromNow", depth0.updated_at, options)))
     + "</div>\n      </div>\n    </a>\n  </li>\n  ";
   return buffer;
   }
@@ -590,8 +590,8 @@ function program1(depth0,data) {
   });
 
 this["Hull"]["templates"]["shelf/shelf"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
@@ -599,8 +599,8 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   });
 
 this["Hull"]["templates"]["stars/stars"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
-helpers = helpers || Handlebars.helpers; data = data || {};
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing;
 
 function program1(depth0,data) {

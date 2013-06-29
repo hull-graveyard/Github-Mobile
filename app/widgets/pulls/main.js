@@ -3,7 +3,7 @@ Hull.widget('pulls', {
   datasources: {
     pulls: function() {
       // HOW TO GET ALL THE PULL REQUESTS OF A USER VIA THE API ?
-      return this.api('github/issues');
+      return this.api({ provider: 'github', path: 'issues' });
     }
   },
 

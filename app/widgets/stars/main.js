@@ -4,7 +4,7 @@ Hull.widget('stars', {
 
   datasources: {
     starred: function() {
-      return this.api('github/users/' + this.options.login + '/starred');
+      return this.api({ provider: 'github', path: 'users/' + this.options.login + '/starred' });
     }
   },
 

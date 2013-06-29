@@ -4,7 +4,8 @@ Hull.widget('activity', {
 
   datasources: {
     news: function() {
-      return this.api('github/users/' + this.options.login + '/' + (this.options.activity || 'events'));
+      var path = 'users/' + this.options.login + '/' + (this.options.activity || 'events');
+      return this.api({ provider: 'github', path: path });
     }
   },
 

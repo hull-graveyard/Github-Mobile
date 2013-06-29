@@ -6,7 +6,7 @@ Hull.widget('app', {
   ],
 
   initialize: function () {
-    this.initRouter();
+    this.initRouter();  
   },
 
   currentSection: 'dashboard',
@@ -27,6 +27,7 @@ Hull.widget('app', {
   },
 
   initRouter: function() {
+    var Backbone = require('backbone');
     var Router = Backbone.Router.extend({
       routes: {
         'dashboard/:view'     : 'dashboard',
@@ -55,6 +56,7 @@ Hull.widget('app', {
   },
 
   beforeRender: function(data) {
+    console.warn("Rendering app...", data);
     data.githubAccount  = _.select(data.me.identities, function(i) { return i.provider == 'github'; })[0];
     data.currentView    = this.currentView;
     data.currentSection = this.currentSection;
