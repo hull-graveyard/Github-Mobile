@@ -18,16 +18,19 @@
     
     <!-- build:css application.css -->
     <link type="text/css" rel="stylesheet" href="./components/ratchet/dist/ratchet.css">
+    <link type="text/css" rel="stylesheet" href="./components/snapjs/snap.css">
     <link type="text/css" rel="stylesheet" href="./styles/main.css">
     <!-- endbuild -->
 
     <!-- build:js vendors.js -->
     <script src="./components/jquery/jquery.js"></script>
-    <!-- <script src="./components/ratchet/dist/ratchet.js"></script> -->
-    <script src="./components/fastclick/lib/fastclick.js"></script>
+    <!-- // <script src="./components/ratchet/dist/ratchet.js"></script> -->
+    <!-- // <script src="./components/fastclick/lib/fastclick.js"></script> -->
+    <script src="./components/snapjs/snap.js"></script>
     <!-- endbuild -->
 
-    <script src="//hull-js.s3.amazonaws.com/0.2.0/hull.js"></script>
+    <!-- <script src="//hull-js.s3.amazonaws.com/develop/hull.js"></script> -->
+    <script src="//js.hull.dev/dist/develop/hull.js"></script>
 
     <!-- build:js application.js -->
     <script src="scripts/hull-init.js"></script>
@@ -38,11 +41,13 @@
 
 </head>
 
-  <body class="animate">
-    <div id="app">
-      <div id="shelf" data-hull-widget="shelf"></div>
+  <body>
+    <a href="https://github.com/hull/hullagram" class="forkme">Fork me on Github</a>
+    <div id="snap-drawers" data-hull-widget="shelf"></div>
+    <div id="content" class='snap-content'>
       <div id="wrap" data-hull-widget="githull"></div>
-      <div id="blanket" data-hull-widget="blanket" data-event="modal.close"></div>
     </div> 
+    <div id="blanket" data-hull-widget="blanket" data-event="modal.close"></div>
+    
   </body>
 </html>

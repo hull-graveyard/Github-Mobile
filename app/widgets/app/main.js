@@ -13,12 +13,13 @@ Hull.widget('app', {
   currentView: 'activity',
 
   sections: {
-    dashboard: ['activity', 'pulls', 'issues', 'stars'],
+    dashboard: ['activity', 'issues', 'stars'],
     users: ['profile', 'repos', 'activity']
   },
 
   actions: {
     toggleShelf: function() {
+      console.warn("Toggle shlef !");
       this.sandbox.emit('shelf.toggle');
     },
     openNotifications: function() {

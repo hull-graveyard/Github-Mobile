@@ -1,26 +1,38 @@
 Hull.widget("shelf", {
   templates: ['shelf'],
-  initialize: function() {
-    _.map(['open', 'close', 'toggle'], function(action) {
-      this.sandbox.on('shelf.' + action, _.bind(this[action], this));
-    }.bind(this));
-  },
 
-  open: function() {
-    document.body.classList.add('shelf-open');
-  },
-
-  close: function() {
-    document.body.classList.remove('shelf-open');
-  },
-
-  toggle: function() {
-    if(document.body.classList.contains('shelf-open')) {
-      this.close();
-    } else {
-      this.open();
+  events: {
+    'click a' : function() {
+      this.snapper.close();
     }
-  }
+  },
+
+  initialize: function() {
+    this.sandbox.on('shelf.open', function() {
+      this.snapper.open('left');
+    }, this);
+
+    this.sandbox.on('shelf.close', function() {
+      this.snapper.close();
+    }, this);
+
+    this.sandbox.on('shelf.toggle', function() {
+      if (this.snapper.state().state=="left" ){
+        
+        this.snapper.close();
+      } else {
+        
+        this.snapper.open('left');
+      }
+    }, this);
+  },
+
+  afterRender: function() {
+    this.snapper = new Snap({
+      element: document.getElementById('content')
+    });
+    $('.left-drawer').show();
+  } 
 
 });
 

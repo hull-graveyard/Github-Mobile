@@ -66,12 +66,13 @@ Hull.widget('app', {
   currentView: 'activity',
 
   sections: {
-    dashboard: ['activity', 'pulls', 'issues', 'stars'],
+    dashboard: ['activity', 'issues', 'stars'],
     users: ['profile', 'repos', 'activity']
   },
 
   actions: {
     toggleShelf: function() {
+      console.warn("Toggle shlef !");
       this.sandbox.emit('shelf.toggle');
     },
     openNotifications: function() {
@@ -207,35 +208,6 @@ Hull.widget('profile', {
 //--------
 
 
-Hull.widget('pulls', {
-  templates: ['pulls'],
-  datasources: {
-    pulls: function() {
-      // HOW TO GET ALL THE PULL REQUESTS OF A USER VIA THE API ?
-      return this.api({ provider: 'github', path: 'issues' });
-    }
-  },
-
-  beforeRender: function(data) {
-    var pullsByRepo = {};
-    _.map(data.pulls, function(issue) {
-      var repo = pullsByRepo[issue.repository.id];
-      if (!repo) {
-        repo = { repository: issue.repository, pulls: [] }
-        pullsByRepo[issue.repository.id] = repo;
-      }
-      repo.pulls.push(issue);
-      issue.summary = _.str.prune(issue.body, 140);
-    });
-    data.pullsByRepo = _.values(pullsByRepo);
-  }
-});
-
-
-
-//--------
-
-
 Hull.widget('repos', {
   templates: ['repos'],
   datasources: {
@@ -252,27 +224,39 @@ Hull.widget('repos', {
 
 Hull.widget("shelf", {
   templates: ['shelf'],
-  initialize: function() {
-    _.map(['open', 'close', 'toggle'], function(action) {
-      this.sandbox.on('shelf.' + action, _.bind(this[action], this));
-    }.bind(this));
-  },
 
-  open: function() {
-    document.body.classList.add('shelf-open');
-  },
-
-  close: function() {
-    document.body.classList.remove('shelf-open');
-  },
-
-  toggle: function() {
-    if(document.body.classList.contains('shelf-open')) {
-      this.close();
-    } else {
-      this.open();
+  events: {
+    'click a' : function() {
+      this.snapper.close();
     }
-  }
+  },
+
+  initialize: function() {
+    this.sandbox.on('shelf.open', function() {
+      this.snapper.open('left');
+    }, this);
+
+    this.sandbox.on('shelf.close', function() {
+      this.snapper.close();
+    }, this);
+
+    this.sandbox.on('shelf.toggle', function() {
+      if (this.snapper.state().state=="left" ){
+        
+        this.snapper.close();
+      } else {
+        
+        this.snapper.open('left');
+      }
+    }, this);
+  },
+
+  afterRender: function() {
+    this.snapper = new Snap({
+      element: document.getElementById('content')
+    });
+    $('.left-drawer').show();
+  } 
 
 });
 
