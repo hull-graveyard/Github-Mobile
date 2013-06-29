@@ -27,7 +27,7 @@ Hull.widget('activity', {
     PullRequestReviewCommentEvent: {},
     PushEvent: { },
     TeamAddEvent: {},
-    WatchEvent: { icon: 'icon-star', action: 'starred', partial: 'watch' },
+    WatchEvent: { icon: 'icon-star', action: 'starred', partial: 'watch' }
   },
 
   beforeRender: function(data) {
@@ -172,7 +172,7 @@ Hull.widget('issues', {
     _.map(data.issues, function(issue) {
       var repo = issuesByRepo[issue.repository.id];
       if (!repo) {
-        repo = { repository: issue.repository, issues: [] }
+        repo = { repository: issue.repository, issues: [] };
         issuesByRepo[issue.repository.id] = repo;
       }
       repo.issues.push(issue);
@@ -191,13 +191,13 @@ Hull.widget('profile', {
   templates: ['profile'],
   datasources: {
     profile: function() {
-      return this.api({ provider: 'github', path: 'users/' + this.options.login })
+      return this.api({ provider: 'github', path: 'users/' + this.options.login });
     }
   },
 
   actions: {
     follow: function(source, event, data) {
-      console.warn("Follow", data.login);
+      // console.warn("Follow", data.login);
     }
   }
 
@@ -303,7 +303,7 @@ Hull.widget('stars', {
       button.data('hullAction', inverse);
       button.html(markup);
     });
-  },
+  }
 
 
 });

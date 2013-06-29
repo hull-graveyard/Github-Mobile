@@ -27,7 +27,7 @@ Hull.widget('activity', {
     PullRequestReviewCommentEvent: {},
     PushEvent: { },
     TeamAddEvent: {},
-    WatchEvent: { icon: 'icon-star', action: 'starred', partial: 'watch' },
+    WatchEvent: { icon: 'icon-star', action: 'starred', partial: 'watch' }
   },
 
   beforeRender: function(data) {

@@ -34,7 +34,7 @@ Hull.widget('stars', {
       button.data('hullAction', inverse);
       button.html(markup);
     });
-  },
+  }
 
 
 });

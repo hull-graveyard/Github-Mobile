@@ -11,7 +11,7 @@ Hull.widget('issues', {
     _.map(data.issues, function(issue) {
       var repo = issuesByRepo[issue.repository.id];
       if (!repo) {
-        repo = { repository: issue.repository, issues: [] }
+        repo = { repository: issue.repository, issues: [] };
         issuesByRepo[issue.repository.id] = repo;
       }
       repo.issues.push(issue);
