@@ -3,22 +3,22 @@
  */
 @font-face {
     font-family: 'Collegiate';
-    src: url('fonts/collegiate/collegiate.eot');
-    src: url('fonts/collegiate/collegiate.eot?#iefix') format('embedded-opentype'),
-         url('fonts/collegiate/collegiate.woff') format('woff'),
-         url('fonts/collegiate/collegiate.ttf') format('truetype'),
-         url('fonts/collegiate/collegiate.svg#collegiateregular') format('svg');
+    src: url('/fonts/collegiate.eot');
+    src: url('/fonts/collegiate.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/collegiate.woff') format('woff'),
+         url('/fonts/collegiate.ttf') format('truetype'),
+         url('/fonts/collegiate.svg#collegiateregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 @font-face {
   font-family: 'GitHubMobileIcons';
-  src:url('fonts/icons/GitHubMobileIcons.eot');
-  src:url('fonts/icons/GitHubMobileIcons.eot?#iefix') format('embedded-opentype'),
-    url('fonts/icons/GitHubMobileIcons.svg#GitHubMobileIcons') format('svg'),
-    url('fonts/icons/GitHubMobileIcons.woff') format('woff'),
-    url('fonts/icons/GitHubMobileIcons.ttf') format('truetype');
+  src:url('/fonts/GitHubMobileIcons.eot');
+  src:url('/fonts/GitHubMobileIcons.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/GitHubMobileIcons.svg#GitHubMobileIcons') format('svg'),
+    url('/fonts/GitHubMobileIcons.woff') format('woff'),
+    url('/fonts/GitHubMobileIcons.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -1065,7 +1065,7 @@ a.block-link{
       height:100%;
   }
   html{
-      background: url(../img/linen.png) 0 0 repeat;
+      background: url(/images/linen.png) 0 0 repeat;
   }
   body:before{
       content:"";
@@ -1099,7 +1099,7 @@ a.block-link{
       height:149px;
       text-indent:-100%;
       font-size:0;line-height:0;
-      background: url(../img/forkme.png) 0 0 repeat;
+      background: url(../images/forkme.png) 0 0 repeat;
       z-index:999;
   }
 }

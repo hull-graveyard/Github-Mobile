@@ -1,213 +1,271 @@
-/*global module:true*/
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+// Generated on 2013-06-29 using generator-webapp 0.2.6
+'use strict';
+var LIVERELOAD_PORT = 35729;
+var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
+    return connect.static(require('path').resolve(dir));
 };
 
-var yeomanConfig = {
-  app: 'app',
-  dist: 'dist'
-};
-
+// # Globbing
+// for performance reasons we're only matching one level down:
+// 'test/spec/{,*/}*.js'
+// use this if you want to recursively match all subfolders:
+// 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+    // load all grunt tasks
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  'use strict';
+    // configurable paths
+    var yeomanConfig = {
+        app: 'app',
+        dist: 'dist'
+    };
 
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
-  grunt.initConfig({
-    yeoman: yeomanConfig,
-
-    open: {
-      server: {
-        url: 'http://localhost:<%= connect.livereload.options.port %>'
-      }
-    },
-
-    // default watch configuration
-    watch: {
-      widgets: {
-        files: ['app/widgets/**/*.js'],
-        tasks: ['concat']
-      },
-      handlebars: {
-        files: ['app/widgets/**/*.hbs'],
-        tasks: ['handlebars']
-      },
-      livereload: {
-        files: [
-          'app/*.html',
-          '{.tmp,app}/styles/*.css',
-          '{.tmp,app}/scripts/*.js',
-          'app/images/*.{png,jpg,jpeg}'
-        ],
-        tasks: ['livereload']
-      }
-    },
-
-    jshint: {
-      all: [
-        'app/scripts/[^templates].js',
-        'app/widgets/**/*.js'
-      ]
-    },
-
-    handlebars: {
-      compile: {
-        files: {
-          "app/scripts/templates.js" : ["app/widgets/**/*.hbs"]
+    grunt.initConfig({
+        yeoman: yeomanConfig,
+        watch: {
+            widgets: {
+                files: ['<%= yeoman.app %>/widgets/{,*/}*.js'],
+                tasks: ['concat']
+            },
+            templates: {
+                files: ['<%= yeoman.app %>/widgets/{,*/}*.hbs'],
+                tasks: ['handlebars']
+            },
+            livereload: {
+                options: {
+                    livereload: LIVERELOAD_PORT
+                },
+                files: [
+                    '<%= yeoman.app %>/*.html',
+                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif}'
+                ]
+            }
         },
-        options: {
-          wrapped: false,
-          namespace: "Hull.templates",
-          processName: function (filename) {
-            return filename.replace(/^app\/widgets\//, '').replace(/\.hbs$/, '');
-          }
-        }
-      }
-    },
-
-    connect: {
-      livereload: {
-        options: {
-          port: 9000,
-          middleware: function (connect) {
-            return [
-              lrSnippet,
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'app')
-            ];
-          }
-        }
-      }
-    },
-
-    clean: {
-      dist: ['.tmp', 'dist/*'],
-      server: '.tmp'
-    },
-    uglify: {
-      dist: {
-        files: {
-          'dist/application.js': [
-            'app/scripts/*.js'
-          ]
-        }
-      }
-    },
-    useminPrepare: {
-      html: 'index.html'
-    },
-    usemin: {
-      html: ['dist/*.html'],
-      css: ['dist/styles/*.css']
-    },
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: 'app/images',
-          src: '*.{png,jpg,jpeg}',
-          dest: 'dist/images'
-        }]
-      }
-    },
-    cssmin: {
-      dist: {
-        files: {
-          'dist/application.css': [
-            'app/components/ratchet/dist/ratchet.css',
-            'app/components/font-awesome/css/font-awesome.css',
-            'app/styles/*.css'
-          ]
-        }
-      }
-    },
-
-    copy: {
-      dist: {
-        files: [
-          { dest: 'dist/index.php', src: 'dist/index.html' },
-          { cwd: 'app/', dest: 'dist/', src: ['.htaccess', 'robots.txt'], expand: true },
-          {
-            cwd: 'app/components/font-awesome/font/',
-            dest: 'dist/font/',
-            filter: 'isFile',
-            src: '*',
-            expand: true
-          }
-        ]
-      }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          removeComments: false,
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: false,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: false,
-          removeRedundantAttributes: false,
-          useShortDoctype: true,
-          removeEmptyAttributes: false,
-          removeOptionalTags: false
+        connect: {
+            options: {
+                port: 9000,
+                // change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
+            },
+            livereload: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            lrSnippet,
+                            mountFolder(connect, '.tmp'),
+                            mountFolder(connect, yeomanConfig.app)
+                        ];
+                    }
+                }
+            },
+            dist: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            mountFolder(connect, yeomanConfig.dist)
+                        ];
+                    }
+                }
+            }
         },
-        files: [{
-          expand: true,
-          cwd: 'app',
-          src: '*.html',
-          dest: 'dist'
-        }]
-      }
-    },
+        open: {
+            server: {
+                path: 'http://localhost:<%= connect.options.port %>'
+            }
+        },
+        clean: {
+            dist: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '.tmp',
+                        '<%= yeoman.dist %>/*',
+                        '!<%= yeoman.dist %>/.git*'
+                    ]
+                }]
+            },
+            server: '.tmp'
+        },
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            all: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/scripts/{,*/}*.js',
+            ]
+        },
+        // not used since Uglify task does concat,
+        // but still available if needed
+        concat: {
+          options: {
+            separator: "\n\n\n\n//--------\n\n\n"
+          },
+          dist: {
+            src: ['<%= yeoman.app %>/widgets/{,*/}*.js'],
+            dest: '<%= yeoman.app %>/scripts/widgets.js'
+          }
+        },
+        rev: {
+            dist: {
+                files: {
+                    src: [
+                        '<%= yeoman.dist %>/scripts/{,*/}*.js',
+                        '<%= yeoman.dist %>/styles/{,*/}*.css',
+                    ]
+                }
+            }
+        },
+        useminPrepare: {
+            options: {
+                dest: '<%= yeoman.dist %>'
+            },
+            html: '<%= yeoman.app %>/index.html'
+        },
+        usemin: {
+            options: {
+                dirs: ['<%= yeoman.dist %>']
+            },
+            html: ['<%= yeoman.dist %>/*.html'],
+            css: ['<%= yeoman.dist %>/styles/*.css']
+        },
+        // imagemin: {
+        //     dist: {
+        //         files: [{
+        //             expand: true,
+        //             cwd: '<%= yeoman.app %>/images',
+        //             src: '{,*/}*.{png,jpg,jpeg}',
+        //             dest: '<%= yeoman.dist %>/images'
+        //         }]
+        //     }
+        // },
+        cssmin: {
+            // This task is pre-configured if you do not wish to use Usemin
+            // blocks for your CSS. By default, the Usemin block from your
+            // `index.html` will take care of minification, e.g.
+            //
+            //     <!-- build:css({.tmp,app}) styles/main.css -->
+            //
+            // dist: {
+            //     files: {
+            //         '<%= yeoman.dist %>/styles/main.css': [
+            //             '.tmp/styles/{,*/}*.css',
+            //             '<%= yeoman.app %>/styles/{,*/}*.css'
+            //         ]
+            //     }
+            // }
+        },
+        htmlmin: {
+            dist: {
+                options: {
+                    /*removeCommentsFromCDATA: true,
+                    // https://github.com/yeoman/grunt-usemin/issues/44
+                    //collapseWhitespace: true,
+                    collapseBooleanAttributes: true,
+                    removeAttributeQuotes: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true*/
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>',
+                    src: '*.html',
+                    dest: '<%= yeoman.dist %>'
+                }]
+            }
+        },
 
-    concat: {
-      options: {
-        separator: "\n\n\n\n//--------\n\n\n"
-      },
-      dist: {
-        src: ['app/widgets/**/*.js'],
-        dest: 'app/scripts/widgets.js'
-      }
-    }
+        handlebars: {
+          compile: {
+            files: {
+              "<%= yeoman.app %>/scripts/templates.js" : ["<%= yeoman.app %>/widgets/**/*.hbs"]
+            },
+            options: {
+              wrapped: false,
+              namespace: "Hull.templates",
+              processName: function (filename) {
+                return filename.replace(/^app\/widgets\//, '').replace(/\.hbs$/, '');
+              }
+            }
+          }
+        },
 
-  });
 
-  grunt.renameTask('regarde', 'watch');
+        // Put files not handled in other tasks here
+        copy: {
+            dist: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        '*.{ico,png,txt}',
+                        'images/*.{webp,gif,jpg,png}',
+                        'fonts/collegiate.woff',
+                        'fonts/GitHubMobileIcons.svg'
+                    ]
+                }, {
+                    expand: true,
+                    cwd: '.tmp/images',
+                    dest: '<%= yeoman.dist %>/images',
+                    src: [
+                        'generated/*'
+                    ]
+                }]
+            }
+        },
+        concurrent: {
+            server: [
+            ],
+            dist: [
+                'htmlmin'
+            ]
+        },
+        bower: {
+            options: {
+                exclude: ['modernizr']
+            },
+            all: {
+                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
+            }
+        }
+    });
 
-  grunt.renameTask('mincss', 'cssmin');
+    grunt.registerTask('server', function (target) {
+        if (target === 'dist') {
+            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+        }
 
-  grunt.registerTask('server', [
-    'clean:server',
-    'livereload-start',
-    'connect:livereload',
-    'open',
-    'watch'
-  ]);
+        grunt.task.run([
+            'clean:server',
+            'concurrent:server',
+            'connect:livereload',
+            'open',
+            'watch'
+        ]);
+    });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'connect:livereload',
-    'watch'
-  ]);
+    grunt.registerTask('build', [
+        'clean:dist',
+        'useminPrepare',
+        'concurrent:dist',
+        'concat',
+        'cssmin',
+        'uglify',
+        'copy:dist',
+        'rev',
+        'usemin'
+    ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'concat',
-    'jshint',
-    'handlebars',
-    'useminPrepare',
-
-    'uglify',
-    'imagemin',
-    'htmlmin',
-    'cssmin',
-    'usemin',
-    'copy'
-  ]);
-
-  grunt.registerTask('default', ['build']);
-
+    grunt.registerTask('default', [
+        'jshint',
+        'build'
+    ]);
 };

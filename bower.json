@@ -1,10 +1,9 @@
 {
-  "name": "githull",
-  "version": "0.1.0",
+  "name": "GithHub Mobile",
+  "version": "0.2.0",
   "dependencies": {
     "jquery": "1.8.x",
-    "ratchet": "latest",
-    "fastclick": "latest",
+    "ratchet": "1.0.0",
     "snapjs": "latest"
   }
 }
