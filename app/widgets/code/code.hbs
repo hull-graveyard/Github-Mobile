@@ -1,0 +1,32 @@
+<div class="inset-text">
+  <header class="clearfix">
+    <a class="button" data-event="watch.toggle" data-action="unwatch" data-repo="{{repo.full_name}}">
+      <span class="icon-eye-blocked"></span> Watch
+    </a>
+    <a class="button" data-event="watch.toggle" data-action="unwatch" data-repo="{{repo.full_name}}">
+      <span class="icon-eye-blocked"></span> Star
+    </a>
+    <a class="button" data-event="watch.toggle" data-action="unwatch" data-repo="{{repo.full_name}}">
+      <span class="icon-fork"></span> Fork
+    </a>
+  </header>
+  <p>{{repo.description}}</p>
+  {{#if repo.homepage}}
+  <b><a class="homepage" href="{{repo.homepage}}" target="repo">{{repo.homepage}}</a></b>
+  {{/if}}
+</div>
+
+<div class="code-house">
+  <header data-event="repo.toggleContent">
+    <span class="icon-file"></span>
+    {{readme.name}}
+    <span class="pull-right">[+]</span>
+  </header>
+  <div class="code-house-inner">
+    {{readme_content}}
+  </div>
+</div>
+
+<div class="margin">{{name}}</b> /</div>
+<div class="file-list" data-hull-widget='tree' data-hull-repo='{{repo.full_name}}'>
+</div>

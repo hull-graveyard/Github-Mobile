@@ -2,7 +2,8 @@ Hull.widget('app', {
 
   templates: [
     'dashboard',
-    'users'
+    'users',
+    'repos',
   ],
 
   initialize: function () {
@@ -13,13 +14,25 @@ Hull.widget('app', {
   currentView: 'activity',
 
   sections: {
-    dashboard: ['activity', 'issues', 'stars'],
-    users: ['profile', 'repos', 'activity']
+    dashboard: [
+      { name: 'activity',  title: 'Activity' },
+      { name: 'user_issues',  title: 'Issues' },
+      { name: 'stars',  title: 'Stars' }
+    ],
+    users: [
+      { name: 'profile', title: "Profile" },
+      { name: 'repos', title: "Repos" },
+      { name: 'activity', title: "Activity" }
+    ],
+    repos: [
+      { name: 'code', title: "Code" }, 
+      { name: 'pulls', title: "Pulls" },
+      { name: 'repo_issues', title: "Issues" }
+    ]
   },
 
   actions: {
     toggleShelf: function() {
-      console.warn("Toggle shlef !");
       this.sandbox.emit('shelf.toggle');
     },
     openNotifications: function() {
@@ -32,7 +45,8 @@ Hull.widget('app', {
     var Router = Backbone.Router.extend({
       routes: {
         'dashboard/:view'     : 'dashboard',
-        'users/:login(/:view)': 'users'
+        'users/:login(/:view)': 'users',
+        'repos/:login/:repo(/:view)': 'repos'
       }
     });
 
@@ -42,6 +56,12 @@ Hull.widget('app', {
       this.currentSection = 'users';
       this.currentView = view || 'profile';
       this.render('users', { login: login });
+    }, this));
+
+    router.on('route:repos', _.bind(function(login, repo, view) {
+      this.currentSection = 'repos';
+      this.currentView = view || 'code';
+      this.render('repos', { login: login, repo: repo });
     }, this));
 
     router.on('route:dashboard', _.bind(function(view) {

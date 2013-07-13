@@ -13,14 +13,14 @@
     <ul class="segmented-controller">
       {{#sectionViews}}
       <li {{#ifEqual name ../currentView}}class="active"{{/ifEqual}}>
-        <a href="#/users/{{../login}}/{{name}}" data-transition="fade">{{title}}</a>
+        <a href="#/repos/{{../login}}/{{../repo}}/{{name}}" data-transition="fade">{{title}}</a>
       </li>
       {{/sectionViews}}
     </ul>
     {{/if}}
   </nav>
   {{#if currentView}}
-  <div class="content" data-hull-widget="{{currentView}}" data-hull-login="{{login}}" data-hull-activity='events'>
+  <div class="content repo-content" data-hull-widget="{{currentView}}" data-hull-login="{{login}}" data-hull-repo='{{repo}}'>
   </div>
   {{/if}}
 

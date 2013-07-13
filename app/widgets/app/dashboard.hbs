@@ -12,8 +12,8 @@
     {{#if sectionViews}}
     <ul class="segmented-controller">
       {{#sectionViews}}
-      <li {{#ifEqual this ../currentView}}class="active"{{/ifEqual}}>
-        <a href="#/dashboard/{{this}}" data-transition="fade">{{classify this}}</a>
+      <li {{#ifEqual name ../currentView}}class="active"{{/ifEqual}}>
+        <a href="#/dashboard/{{name}}" data-transition="fade">{{title}}</a>
       </li>
       {{/sectionViews}}
     </ul>

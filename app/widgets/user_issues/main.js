@@ -1,4 +1,4 @@
-Hull.widget('issues', {
+Hull.widget('user_issues', {
   templates: ['issues'],
   datasources: {
     issues: function() {

@@ -1,0 +1,22 @@
+<ul class="list text-list issues-list">
+  {{#issues}}
+  <li>
+    <div class="padding">
+      <a href="#" class="block-link">
+        <b>
+          {{title}}
+          <span>&middot; {{fromNow updated_at}}</span>
+        </b>
+      </a>      
+      {{#user}}
+      <div class="actor">
+        <img src="{{avatar_url}}">
+        <a data-transition="slide-in" href="#/users/{{login}}">{{login}}</a>
+        created #{{../number}}
+      </div>
+      {{/user}}
+    </div>
+    <span class="chevron"></span>
+  </li>
+  {{/issues}}
+</ul>

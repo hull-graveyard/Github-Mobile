@@ -1,0 +1,9 @@
+<ul>
+  {{#each files.tree}}
+  <li>
+    <a href="#/repos/{{../repo}}/browse/{{path}}" data-hull-action="browse" data-transition="slide-in">
+      <span class="icon-{{type}}"></span> {{path}}
+    </a>
+  </li>
+  {{/each}}
+</ul>

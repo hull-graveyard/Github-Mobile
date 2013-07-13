@@ -27,6 +27,10 @@ Hull.widget("shelf", {
     }, this);
   },
 
+  beforeRender: function(data) {
+    data.githubAccount  = _.select(data.me.identities, function(i) { return i.provider == 'github'; })[0];
+  },
+
   afterRender: function() {
     this.snapper = new Snap({
       element: document.getElementById('content')
